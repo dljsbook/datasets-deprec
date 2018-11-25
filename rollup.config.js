@@ -14,5 +14,6 @@ export default {
     '@tensorflow/tfjs',
     '@tensorflow/tfjs-vis',
     'vega',
+    'papaparse',
   ],
 }
