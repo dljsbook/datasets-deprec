@@ -11,7 +11,7 @@ interface IMoonsProps {
   num?: number;
 }
 
-const getTensor = (points: number[], num: number): tf.Tensor2D => tf.tensor2d(points, [num, 1]);
+// const getTensor = (points: number[], num: number): tf.Tensor2D => tf.tensor2d(points, [num, 1]);
 
 class Moons extends Dataset {
   private num = 200;
@@ -20,6 +20,7 @@ class Moons extends Dataset {
       this.num = props.num;
     }
   }
+
   get = (num?: number) => {
     this.init({
       num,
@@ -34,11 +35,12 @@ class Moons extends Dataset {
       noise: 0.1,
     }).map(point => ({
       ...point,
+      index,
       color: COLORS[index],
     }))), []);
 
-    const data = getTensor(points.map(({ x }) => x), this.num);
-    const labels = getTensor(points.map(({ y }) => y), this.num);
+    const data = tf.tensor2d(points.map(({ x, y }) => [ x, y ]), [this.num, 2], 'float32');
+    const labels = tf.tensor1d(points.map(({ index }) => index), 'float32');
 
     return {
       data,
@@ -51,6 +53,23 @@ class Moons extends Dataset {
       }
     };
   }
+
+  getForType = (type: POLARITY) => {
+    const point = generator({
+      type,
+      num: 1,
+      noise: 0,
+    })[0];
+    const data = tf.tensor2d([point.x, point.y], [1, 2], 'float32');
+    const labels = tf.tensor1d([type === POLARITY.POS ? 0 : 1], 'float32');
+
+    return {
+      data,
+      labels,
+    };
+  }
 }
 
 export default new Moons();
+
+export { POLARITY } from './generator';

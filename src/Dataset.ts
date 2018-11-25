@@ -5,12 +5,16 @@ import {
   DATAROOT,
 } from './config';
 
+interface IProps {
+  classes?: number;
+}
+
 class Dataset {
   private callbacks: Function[] = [];
   protected loaded: boolean = true;
   protected classes?: number;
 
-  constructor(props = {}) {
+  constructor(props: IProps = {}) {
     this.classes = props.classes;
   }
 
