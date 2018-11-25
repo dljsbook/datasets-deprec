@@ -30,6 +30,7 @@
     "@tensorflow/tfjs": "^0.13.5",
     "@tensorflow/tfjs-vis": "^0.3.0",
     "color": "^3.1.0",
+    "csv-parse": "^4.0.1",
     "vega": "^4.3.0",
     "vega-view": "^3.4.0"
   }

@@ -112,4 +112,4 @@ class MNIST extends Dataset {
   }
 }
 
-export default new MNIST();
+export default MNIST;

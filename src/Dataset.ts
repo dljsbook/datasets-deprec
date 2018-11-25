@@ -28,7 +28,7 @@ class Dataset {
       return oneHot([labelIndex], classes);
     }
 
-    return oneHot(labelIndex, classes);
+    return oneHot((labelIndex as any), classes);
   }
 
   ready = (fn = () => {}) => new Promise(resolve => {
@@ -43,10 +43,22 @@ class Dataset {
     });
   });
 
-  loadFromURL = async (url: string) => {
+  loadFromURL = async (url: string, method: string = 'arrayBuffer') => {
     const resp = await fetch(`${DATAROOT}${url}`);
-    const buff = await resp.arrayBuffer();
-    return new Uint8Array(buff);
+    if (typeof method === 'string' && !resp[method]) {
+      throw new Error(`Method ${method} does not exist on response`);
+    }
+    if (method === 'arrayBuffer') {
+      const buff = await resp.arrayBuffer();
+      return new Uint8Array(buff);
+    }
+
+    // if (typeof method === 'string') {
+    //   return await resp[method]();
+    // }
+
+    return await resp[method]();
+    // return method(resp);
   }
 
   load = async (fn) => {

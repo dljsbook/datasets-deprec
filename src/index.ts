@@ -4,3 +4,4 @@ export { default as Moons, POLARITY as MOONS_POLARITY } from './Moons';
 export { default as Clusters } from './Clusters';
 export { default as Circles } from './Circles';
 export { default as Swirl } from './Swirl';
+export { default as BostonHousePrices } from './BostonHousePrices';
