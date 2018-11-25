@@ -1,0 +1,35 @@
+{
+  "name": "@dljsbook/datasets",
+  "version": "0.0.1",
+  "description": "Datasets",
+  "author": "Kevin Scott <kevin@dljsbook.com>",
+  "license": "MIT",
+  "repository": "https://github.com/dljsbook/datasets",
+  "peerDependencies": {
+    "@tensorflow/tfjs": "^0.13.5"
+  },
+  "main": "dist/index.js",
+  "devDependencies": {
+    "@babel/core": "^7.1.6",
+    "gh-pages": "^2.0.1",
+    "rollup": "^0.67.3",
+    "rollup-plugin-babel": "^4.0.3",
+    "rollup-plugin-commonjs": "^9.2.0",
+    "rollup-plugin-node-resolve": "^3.4.0",
+    "rollup-plugin-typescript": "^1.0.0",
+    "tslib": "^1.9.3",
+    "typescript": "^3.1.6"
+  },
+  "scripts": {
+    "deploy": "gh-pages -d data",
+    "develop": "rollup -c rollup.config.js",
+    "watch": "rollup -c rollup.config.js -w"
+  },
+  "dependencies": {
+    "@tensorflow/tfjs": "^0.13.5",
+    "@tensorflow/tfjs-vis": "^0.3.0",
+    "color": "^3.1.0",
+    "vega": "^4.3.0",
+    "vega-view": "^3.4.0"
+  }
+}
