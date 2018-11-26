@@ -82,7 +82,7 @@ class MNIST extends Dataset {
       throw new Error(`error at index: ${index} and label: ${label}, pixel length: ${pixels.size}`);
     }
 
-    return new Image(pixels, label, SIDE);
+    return new Image(pixels, label, SIDE, { name: 'MNIST' });
   }
 
   get = (set:string, amount: number) => {

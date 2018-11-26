@@ -49,7 +49,7 @@ class Moons extends Dataset {
         const width = 480;
         const height = 200;
         const chart = await makeChart(points, width, height);
-        log(chart, { width, height: height + 40 });
+        log(chart, { width, height: height + 40, name: 'Moons' });
       }
     };
   }

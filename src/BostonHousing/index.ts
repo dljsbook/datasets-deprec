@@ -1,5 +1,6 @@
 import * as tf from '@tensorflow/tfjs';
 import * as Papa from 'papaparse';
+import log from '../utils/log';
 import Dataset from '../Dataset';
 import {
   DATA,
@@ -41,6 +42,7 @@ class BostonHousing extends Dataset {
     const labels = tf.tensor1d(dataset.map(({ medv }) => medv), 'float32');
     const data = tf.tensor2d(dataset.map(({
       medv,
+      ID,
       ...rest
     }) => Object.values(rest)));
 
@@ -48,7 +50,7 @@ class BostonHousing extends Dataset {
       data,
       labels,
       print: () => {
-        console.log(data);
+        log(dataset, { name: 'Boston Housing' });
       },
     };
   }

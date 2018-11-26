@@ -1,6 +1,9 @@
 import * as tfvis from '@tensorflow/tfjs-vis';
+import {
+  IOptions,
+} from './types';
 
-type IProps = (src: string, props?: { width: number; height: number; }) => void;
+type IProps = (src: string, props?: IOptions) => void;
 
 const logImage: IProps = (src, { width, height } = {}) => {
   const img = new Image();
@@ -23,7 +26,7 @@ const logImage: IProps = (src, { width, height } = {}) => {
     };
     // console.log('%c ', Object.keys(style).map(key => `${key}: ${style[key]}`).join(';'));
     const surface = tfvis.visor().surface({
-      name: 'Image',
+      name: name || 'Image',
       tab: 'Console',
     });
     surface.drawArea.appendChild(img);

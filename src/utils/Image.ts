@@ -6,11 +6,13 @@ class Image {
   private size: number;
   private canvas: any;
   private dataURL: string;
+  private name: string;
 
-  constructor(data, label, size) {
+  constructor(data, label, size, { name }) {
     this.data = data;
     this.label = label;
     this.size = size;
+    this.name = name;
   }
 
   print() {
@@ -35,7 +37,7 @@ class Image {
       this.dataURL = this.canvas.toDataURL('image/png');
     }
 
-    log(this.dataURL);
+    log(this.dataURL, { name: this.name });
   }
 }
 
